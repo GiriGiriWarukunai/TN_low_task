@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class DeleteDuplicate {
-    int[] deleteDuplicate(int[] a) {
+    public int[] deleteDuplicate(int[] a) {
         int readIdx = 1;
         int writeIdx = 1;
         for (; readIdx < a.length; readIdx++) {
