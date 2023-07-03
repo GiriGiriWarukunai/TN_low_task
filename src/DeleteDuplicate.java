@@ -1,37 +1,22 @@
 import java.util.Arrays;
 
 public class DeleteDuplicate {
-    int[] deleteDuplicate(int[] a){
-        int read_idx;
-
-        repeatingElement:
-        for (read_idx = 1; read_idx < a.length; read_idx++) {
-            for (int prev_idx = 0; prev_idx < read_idx; prev_idx++) {
-                if (a[read_idx] == a[prev_idx]){
-                    break repeatingElement;
+    int[] deleteDuplicate(int[] a) {
+        int readIdx = 1;
+        int writeIdx = 1;
+        for (; readIdx < a.length; readIdx++) {
+            int prevIdx = 0;
+            for (; prevIdx < readIdx; prevIdx++) {
+                if (a[readIdx] == a[prevIdx]) {
+                    break;
                 }
             }
-        }
-
-        if(read_idx == a.length) {
-            return a;
-        }
-        else {
-            int write_idx = read_idx;
-            for(; read_idx < a.length; read_idx++){
-                int prev_idx = 0;
-                for(; prev_idx < read_idx; prev_idx++) {
-                    if (a[read_idx] == a[prev_idx]) {
-                        break;
-                    }
-                }
-                if(prev_idx == read_idx) {
-                    a[write_idx] = a[read_idx];
-                    write_idx++;
-                }
+            if (prevIdx == readIdx) {
+                a[writeIdx] = a[readIdx];
+                writeIdx++;
             }
-            a = Arrays.copyOfRange(a, 0, write_idx);
-            return a;
         }
+        a = Arrays.copyOfRange(a, 0, writeIdx);
+        return a;
     }
 }
